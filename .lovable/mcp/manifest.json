@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://ihyxemjksxwuovdabjxu.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "intervix-ai",
+      "version": "0.1.0",
+      "title": "Intervix_Ai"
+    },
+    "tools": [
+      {
+        "name": "search_jobs",
+        "title": "Search jobs",
+        "description": "Search the latest Cloud/DevOps job listings collected by Intervixa AI.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Free text matched against job title."
+            },
+            "company": {
+              "type": "string",
+              "description": "Filter by company name."
+            },
+            "location": {
+              "type": "string",
+              "description": "Filter by location."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max rows to return (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_interview_questions",
+        "title": "Search interview questions",
+        "description": "Search topic-wise interview questions with answers, hints and explanations.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "topic": {
+              "type": "string",
+              "description": "Topic, e.g. Linux, AWS, Docker, Kubernetes."
+            },
+            "role": {
+              "type": "string",
+              "description": "Target role, e.g. DevOps Engineer."
+            },
+            "company": {
+              "type": "string",
+              "description": "Company the question was asked at."
+            },
+            "difficulty": {
+              "type": "string",
+              "description": "Difficulty, e.g. easy, medium, hard."
+            },
+            "query": {
+              "type": "string",
+              "description": "Free text matched against the question."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max rows to return (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_company_questions",
+        "title": "Search company-wise questions",
+        "description": "Search interview questions grouped by company, role and required skills.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "company": {
+              "type": "string",
+              "description": "Company name."
+            },
+            "role": {
+              "type": "string",
+              "description": "Role, e.g. Cloud Engineer."
+            },
+            "query": {
+              "type": "string",
+              "description": "Free text matched against the question."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max rows to return (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_scenario_questions",
+        "title": "Search scenario questions",
+        "description": "Search real-world scenario-based Cloud/DevOps interview questions.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "technology": {
+              "type": "string",
+              "description": "Technology, e.g. Kubernetes, Terraform."
+            },
+            "query": {
+              "type": "string",
+              "description": "Free text matched against the scenario title."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max rows to return (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_hr_contacts",
+        "title": "Search HR contacts",
+        "description": "Search recruiter/HR contacts collected from recent Cloud & DevOps hiring posts.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "company": {
+              "type": "string",
+              "description": "Company name."
+            },
+            "query": {
+              "type": "string",
+              "description": "Free text matched against the contact name."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max rows to return (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_prep_roadmap",
+        "title": "Get prep roadmap",
+        "description": "Get the ordered Cloud & DevOps interview preparation roadmap modules and their topics.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_cold_email_templates",
+        "title": "List cold email templates",
+        "description": "List the cold email / outreach templates available in Intervixa AI.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_resume_templates",
+        "title": "List resume templates",
+        "description": "List downloadable ATS resume sample templates.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
