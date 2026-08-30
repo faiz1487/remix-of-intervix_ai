@@ -245,7 +245,7 @@ var list_resume_templates_default = defineTool8({
 });
 
 // src/lib/mcp/index.ts
-var projectRef = "ihyxemjksxwuovdabjxu";
+var projectRef = "sbxomojhljyonzkleoiv";
 var mcp_default = defineMcp({
   name: "intervix-ai",
   title: "Intervix_Ai",
